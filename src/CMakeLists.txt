@@ -73,6 +73,12 @@ if(OQS_ENABLE_SIG_SNOVA)
 endif()
 ##### OQS_COPY_FROM_UPSTREAM_FRAGMENT_ADD_ALG_OBJECTS_END
 
+# --- custom: Hawk signatures (Hawk-512 / Hawk-1024) ---
+if(OQS_ENABLE_SIG_hawk_512 OR OQS_ENABLE_SIG_hawk_1024)
+    add_subdirectory(sig/hawk)
+    set(SIG_OBJS ${SIG_OBJS} ${HAWK_OBJS})
+endif()
+
 if(OQS_ENABLE_SIG_SLH_DSA)
     add_subdirectory(sig/slh_dsa)
     set(SIG_OBJS ${SIG_OBJS} ${SLH_DSA_OBJS})

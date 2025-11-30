@@ -38,6 +38,10 @@ extern "C" {
 #define OQS_SIG_alg_ml_dsa_65 "ML-DSA-65"
 /** Algorithm identifier for ML-DSA-87 */
 #define OQS_SIG_alg_ml_dsa_87 "ML-DSA-87"
+/** Algorithm identifier for HAWK-512 */
+#define OQS_SIG_alg_hawk_512  "hawk-512"
+/** Algorithm identifier for HAWK-1024 */
+#define OQS_SIG_alg_hawk_1024 "hawk-1024"
 /** Algorithm identifier for Falcon-512 */
 #define OQS_SIG_alg_falcon_512 "Falcon-512"
 /** Algorithm identifier for Falcon-1024 */
@@ -486,7 +490,7 @@ extern "C" {
 ///// OQS_COPY_FROM_UPSTREAM_FRAGMENT_ALGS_LENGTH_START
 
 /** Number of algorithm identifiers above. */
-#define OQS_SIG_algs_length 65 + OQS_SIG_SLH_DSA_algs_length
+#define OQS_SIG_algs_length 67 + OQS_SIG_SLH_DSA_algs_length
 ///// OQS_COPY_FROM_UPSTREAM_FRAGMENT_ALGS_LENGTH_END
 
 /**
