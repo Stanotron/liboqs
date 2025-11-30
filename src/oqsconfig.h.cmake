@@ -168,6 +168,10 @@
 #cmakedefine OQS_ENABLE_SIG_ml_dsa_87 1
 #cmakedefine OQS_ENABLE_SIG_ml_dsa_87_avx2 1
 
+#cmakedefine OQS_ENABLE_SIG_HAWK
+#cmakedefine OQS_ENABLE_SIG_hawk_512
+#cmakedefine OQS_ENABLE_SIG_hawk_1024
+
 #cmakedefine OQS_ENABLE_SIG_FALCON 1
 #cmakedefine OQS_ENABLE_SIG_falcon_512 1
 #cmakedefine OQS_ENABLE_SIG_falcon_512_avx2 1

@@ -11,6 +11,14 @@
 
 #include <oqs/oqs.h>
 
+#ifdef OQS_ENABLE_SIG_hawk_512
+OQS_SIG *OQS_SIG_hawk_512_new(void);
+#endif
+
+#ifdef OQS_ENABLE_SIG_hawk_1024
+OQS_SIG *OQS_SIG_hawk_1024_new(void);
+#endif
+
 OQS_API const char *OQS_SIG_alg_identifier(size_t i) {
 	// EDIT-WHEN-ADDING-SIG
 	const char *a[OQS_SIG_algs_length] = {
@@ -18,6 +26,8 @@ OQS_API const char *OQS_SIG_alg_identifier(size_t i) {
 		OQS_SIG_alg_ml_dsa_44,
 		OQS_SIG_alg_ml_dsa_65,
 		OQS_SIG_alg_ml_dsa_87,
+		OQS_SIG_alg_hawk_512,
+		OQS_SIG_alg_hawk_1024,
 		OQS_SIG_alg_falcon_512,
 		OQS_SIG_alg_falcon_1024,
 		OQS_SIG_alg_falcon_padded_512,
@@ -275,6 +285,20 @@ OQS_API int OQS_SIG_alg_is_enabled(const char *method_name) {
 		return 1;
 #else
 		return 0;
+#endif
+
+	} else if (0 == strcasecmp(method_name, OQS_SIG_alg_hawk_512)) {
+#ifdef OQS_ENABLE_SIG_hawk_512
+    	return 1;
+#else
+    	return 0;
+#endif
+
+	} else if (0 == strcasecmp(method_name, OQS_SIG_alg_hawk_1024)) {
+#ifdef OQS_ENABLE_SIG_hawk_1024
+    	return 1;
+#else
+    	return 0;
 #endif
 
 	} else if (0 == strcasecmp(method_name, OQS_SIG_alg_falcon_512)) {
@@ -1679,6 +1703,20 @@ OQS_API OQS_SIG *OQS_SIG_new(const char *method_name) {
 		return OQS_SIG_ml_dsa_87_new();
 #else
 		return NULL;
+#endif
+
+	} else if (0 == strcasecmp(method_name, OQS_SIG_alg_hawk_512)) {
+#ifdef OQS_ENABLE_SIG_hawk_512
+    return OQS_SIG_hawk_512_new();
+#else
+    return NULL;
+#endif
+
+	} else if (0 == strcasecmp(method_name, OQS_SIG_alg_hawk_1024)) {
+#ifdef OQS_ENABLE_SIG_hawk_1024
+    return OQS_SIG_hawk_1024_new();
+#else
+    return NULL;
 #endif
 
 	} else if (0 == strcasecmp(method_name, OQS_SIG_alg_falcon_512)) {
