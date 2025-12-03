@@ -11,6 +11,10 @@
 
 #include <oqs/oqs.h>
 
+#ifdef OQS_ENABLE_KEM_SABER
+#include <oqs/kem_saber.h>
+#endif
+
 OQS_API const char *OQS_KEM_alg_identifier(size_t i) {
 	// EDIT-WHEN-ADDING-KEM
 	const char *a[OQS_KEM_algs_length] = {
@@ -51,6 +55,9 @@ OQS_API const char *OQS_KEM_alg_identifier(size_t i) {
 		OQS_KEM_alg_frodokem_976_shake,
 		OQS_KEM_alg_frodokem_1344_aes,
 		OQS_KEM_alg_frodokem_1344_shake,
+        OQS_KEM_alg_saber_lightsaber,
+        OQS_KEM_alg_saber_saber,
+        OQS_KEM_alg_saber_firesaber,
 	};
 	if (i >= OQS_KEM_algs_length) {
 		return NULL;
@@ -297,6 +304,24 @@ OQS_API int OQS_KEM_alg_is_enabled(const char *method_name) {
 #else
 		return 0;
 #endif
+	} else if (0 == strcasecmp(method_name, OQS_KEM_alg_saber_lightsaber)) {
+#ifdef OQS_ENABLE_KEM_saber_lightsaber
+        return 1;
+#else
+        return 0;
+#endif
+    } else if (0 == strcasecmp(method_name, OQS_KEM_alg_saber_saber)) {
+#ifdef OQS_ENABLE_KEM_saber_saber
+        return 1;
+#else
+        return 0;
+#endif
+    } else if (0 == strcasecmp(method_name, OQS_KEM_alg_saber_firesaber)) {
+#ifdef OQS_ENABLE_KEM_saber_firesaber
+        return 1;
+#else
+        return 0;
+#endif
 		// EDIT-WHEN-ADDING-KEM
 	} else {
 		return 0;
@@ -537,6 +562,24 @@ OQS_API OQS_KEM *OQS_KEM_new(const char *method_name) {
 		return OQS_KEM_frodokem_1344_shake_new();
 #else
 		return NULL;
+#endif
+	} else if (0 == strcasecmp(method_name, OQS_KEM_alg_saber_lightsaber)) {
+#ifdef OQS_ENABLE_KEM_saber_lightsaber
+        return OQS_KEM_saber_lightsaber_new();
+#else
+        return NULL;
+#endif
+    } else if (0 == strcasecmp(method_name, OQS_KEM_alg_saber_saber)) {
+#ifdef OQS_ENABLE_KEM_saber_saber
+        return OQS_KEM_saber_saber_new();
+#else
+        return NULL;
+#endif
+    } else if (0 == strcasecmp(method_name, OQS_KEM_alg_saber_firesaber)) {
+#ifdef OQS_ENABLE_KEM_saber_firesaber
+        return OQS_KEM_saber_firesaber_new();
+#else
+        return NULL;
 #endif
 		// EDIT-WHEN-ADDING-KEM
 	} else {

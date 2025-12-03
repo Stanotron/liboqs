@@ -160,6 +160,11 @@
 #cmakedefine OQS_ENABLE_KEM_ml_kem_1024_cuda 1
 #cmakedefine OQS_ENABLE_KEM_ml_kem_1024_icicle_cuda 1
 
+#cmakedefine OQS_ENABLE_KEM_SABER 1
+#cmakedefine OQS_ENABLE_KEM_saber_lightsaber 1
+#cmakedefine OQS_ENABLE_KEM_saber_saber 1
+#cmakedefine OQS_ENABLE_KEM_saber_firesaber 1
+
 #cmakedefine OQS_ENABLE_SIG_ML_DSA 1
 #cmakedefine OQS_ENABLE_SIG_ml_dsa_44 1
 #cmakedefine OQS_ENABLE_SIG_ml_dsa_44_avx2 1
